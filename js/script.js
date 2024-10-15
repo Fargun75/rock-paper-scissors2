@@ -23,22 +23,22 @@ function playGame() {
 
     function playRound(humanChoice, computerChoice) {
         if (humanChoice === "rock" && computerChoice === "paper") {
-            console.log("You loose - paper beats rock!");
+            console.log("You loose - the computer chose paper and beats rock!");
             computerScore += 1;
         } else if (humanChoice === "rock" && computerChoice === "scissors") {
-            console.log("You win - rock beats scissors!");
+            console.log("You win - the computer chose scissors and rock beats scissors!");
             humanScore += 1;
         } else if (humanChoice === "paper" && computerChoice === "rock") {
-            console.log("You win - paper beats rock!");
+            console.log("You win - the computer chose rock and paper beats rock!");
             humanScore += 1;
         } else if (humanChoice === "paper" && computerChoice === "scissors") {
-            console.log("You loose - scissors beats paper!");
+            console.log("You loose - the computer chose scissors and beats paper!");
             computerScore += 1;
         } else if (humanChoice === "scissors" && computerChoice === "rock") {
-            console.log("You loose - rock beats scissors!");
+            console.log("You loose - the computer chose rock and beats scissors!");
             computerScore += 1;
         } else if (humanChoice === "scissors" && computerChoice === "paper") {
-            console.log("You win - scissors beats paper!");
+            console.log("You win - the computer chose paper and scissors beats paper!");
             humanScore += 1;
         } else if (humanChoice === computerChoice) {
             console.log("It's a draw!");
@@ -59,7 +59,7 @@ function playGame() {
     function showScore() {
         if (humanScore > computerScore) {
             console.log("You win! You are best of five attempts!");
-        } else if (computerScore < humanScore) {
+        } else if (computerScore > humanScore) {
             console.log("I'm sorry! You lost this competition!");
         } else {
             console.log("Looks like it's a draw after all");
