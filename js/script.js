@@ -8,14 +8,41 @@ function getComputerChoice() {
 
 }
 
-function getHumanChoice() {
+
+
+
+
+/*function getHumanChoice() {
     let choice = prompt("Rock, Paper or Scissors? - best of five attempts");
     choice = choice.toLowerCase();
     return choice;
 
-}
+}*/
 
 function playGame() {
+
+    let rock = document.querySelector('#rock');
+    rock.addEventListener('click', function () {
+        let choice = "rock";
+        playRound(choice, getComputerChoice());
+
+    });
+
+    let paper = document.querySelector('#paper');
+    paper.addEventListener('click', function (e) {
+        let choice = "paper";
+        playRound(choice, getComputerChoice());
+    });
+
+    let scissors = document.querySelector('#scissors');
+    scissors.addEventListener('click', function (e) {
+        let choice = "scissors";
+        playRound(choice, getComputerChoice());
+    });
+
+    let result = document.querySelector('#result');
+    let score = document.querySelector('#score');
+
 
 
     let humanScore = 0;
@@ -23,40 +50,43 @@ function playGame() {
 
     function playRound(humanChoice, computerChoice) {
         if (humanChoice === "rock" && computerChoice === "paper") {
-            console.log("You loose - the computer chose paper and beats rock!");
+            result.textContent = ("You loose - the computer chose paper and beats rock!");
             computerScore += 1;
         } else if (humanChoice === "rock" && computerChoice === "scissors") {
-            console.log("You win - the computer chose scissors and rock beats scissors!");
+            result.textContent = ("You win - the computer chose scissors and rock beats scissors!");
             humanScore += 1;
         } else if (humanChoice === "paper" && computerChoice === "rock") {
-            console.log("You win - the computer chose rock and paper beats rock!");
+            result.textContent = ("You win - the computer chose rock and paper beats rock!");
             humanScore += 1;
         } else if (humanChoice === "paper" && computerChoice === "scissors") {
-            console.log("You loose - the computer chose scissors and beats paper!");
+            result.textContent = ("You loose - the computer chose scissors and beats paper!");
             computerScore += 1;
         } else if (humanChoice === "scissors" && computerChoice === "rock") {
-            console.log("You loose - the computer chose rock and beats scissors!");
+            result.textContent = ("You loose - the computer chose rock and beats scissors!");
             computerScore += 1;
         } else if (humanChoice === "scissors" && computerChoice === "paper") {
-            console.log("You win - the computer chose paper and scissors beats paper!");
+            result.textContent = ("You win - the computer chose paper and scissors beats paper!");
             humanScore += 1;
         } else if (humanChoice === computerChoice) {
-            console.log("It's a draw!");
+            result.textContent = ("It's a draw!");
         } else {
-            console.log("I think there is a typo..?");
+            result.textContent = ("I think there is a typo..?");
         }
 
-        console.log("Your score is " + humanScore);
-        console.log("The computer score is " + computerScore);
-        console.log("");
+        score.textContent = `
+        Your score is ${humanScore}
+        The computer score is ${computerScore}
+        `
     }
 
-    for (let i=0; i < 5; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
-    }
+    /*for (let i = 0; i < 5; i++) {}*/
+    //playRound(choise, getComputerChoice());
 
-    
-    function showScore() {
+
+
+
+
+    /*function showScore() {
         if (humanScore > computerScore) {
             console.log("You win! You are best of five attempts!");
         } else if (computerScore > humanScore) {
@@ -66,7 +96,7 @@ function playGame() {
         }
     }
 
-    showScore();
+    showScore();*/
 
 }
 
