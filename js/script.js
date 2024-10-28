@@ -5,50 +5,19 @@ function getComputerChoice() {
     } else if (num === 1) {
         return ("paper");
     } else return ("scissors");
-
 }
+let result = document.querySelector('#result');
+let score = document.querySelector('#score');
+let winner = document.querySelector('#winner');
 
 
+let humanScore = 0;
+let computerScore = 0;
 
+function playRound(humanChoice, computerChoice) {
 
+    if (humanScore < 5 && computerScore < 5) {
 
-/*function getHumanChoice() {
-    let choice = prompt("Rock, Paper or Scissors? - best of five attempts");
-    choice = choice.toLowerCase();
-    return choice;
-
-}*/
-
-function playGame() {
-
-    let rock = document.querySelector('#rock');
-    rock.addEventListener('click', function () {
-        let choice = "rock";
-        playRound(choice, getComputerChoice());
-
-    });
-
-    let paper = document.querySelector('#paper');
-    paper.addEventListener('click', function (e) {
-        let choice = "paper";
-        playRound(choice, getComputerChoice());
-    });
-
-    let scissors = document.querySelector('#scissors');
-    scissors.addEventListener('click', function (e) {
-        let choice = "scissors";
-        playRound(choice, getComputerChoice());
-    });
-
-    let result = document.querySelector('#result');
-    let score = document.querySelector('#score');
-
-
-
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playRound(humanChoice, computerChoice) {
         if (humanChoice === "rock" && computerChoice === "paper") {
             result.textContent = ("You loose - the computer chose paper and beats rock!");
             computerScore += 1;
@@ -70,34 +39,38 @@ function playGame() {
         } else if (humanChoice === computerChoice) {
             result.textContent = ("It's a draw!");
         } else {
-            result.textContent = ("I think there is a typo..?");
+            result.textContent = ("I think you missed...");
         }
 
-        score.textContent = `
-        Your score is ${humanScore}
-        The computer score is ${computerScore}
-        `
-    }
+        score.textContent = (`Your score is ${humanScore}, ` + ` The computer score is ${computerScore}`);
 
-    /*for (let i = 0; i < 5; i++) {}*/
-    //playRound(choise, getComputerChoice());
+        if (humanScore === 5 && computerScore < 5) {
+            winner.textContent = `You win!!!`;
 
+        } else if (computerScore === 5 && humanScore < 5) {
+            winner.textContent = `You lost - the computer is the winner`
 
-
-
-
-    /*function showScore() {
-        if (humanScore > computerScore) {
-            console.log("You win! You are best of five attempts!");
-        } else if (computerScore > humanScore) {
-            console.log("I'm sorry! You lost this competition!");
-        } else {
-            console.log("Looks like it's a draw after all");
         }
-    }
-
-    showScore();*/
-
+    } else return;
 }
 
-playGame();
+let button = document.querySelector('.buttons');
+
+button.addEventListener('click', function (e) {
+    let target = e.target;
+    let choice;
+    switch (target.id) {
+        case ('rock'):
+            choice = "rock"
+            break;
+
+        case ('paper'):
+            choice = "paper"
+            break;
+
+        case ('scissors'):
+            choice = "scissors"
+            break;
+    }
+    playRound(choice, getComputerChoice());
+});
