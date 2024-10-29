@@ -48,7 +48,7 @@ function playRound(humanChoice, computerChoice) {
             winner.textContent = `You win!!!`;
 
         } else if (computerScore === 5 && humanScore < 5) {
-            winner.textContent = `You lost - the computer is the winner`
+            winner.textContent = `You lost - the computer is the winner!`
 
         }
     } else return;
